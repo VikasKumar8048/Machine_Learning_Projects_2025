@@ -1,0 +1,21 @@
+Note: In this Stock price pridictor Lasso regression is not work properly 
+due to following reasons :
+This causes Lasso to:
+
+Shrink less-important coefficients to zero (feature elimination)
+
+Prefer sparse models — great for high-dimensional datasets (like text, genes, etc.)
+
+Can over-penalize when:
+
+The number of features is small
+
+Features are highly correlated (which is the case here)
+
+The default regularization strength (alpha=1.0) is too high
+
+🔬 Why Lasso Performs Poorly Here
+Cause	Explanation
+❗ Few Features	Lasso tries to shrink coefficients to zero, but when there are only 4 features, this can lead to underfitting.
+🔗 Highly Correlated Inputs	Lasso arbitrarily picks one correlated feature and eliminates the rest — even if they’re all important (e.g., Open, High, Low are all predictive of Close)
+🧪 Default alpha is too aggressive	If you don't tune alpha, Lasso might penalize too harshly.
